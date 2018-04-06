@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <script src="p5.min.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="sketch.js"></script>
+
+    <style>
+    .row {
+      background-color: #e3e3e3;
+      border-radius: 15px;
+    }
+    .col-md-10 {
+      background-color: #f5f3f3;  
+    }
+    </style>
+
+    <title>TRANSFORMATIONS</title>
+
+  </head>
+  <body>
+  <!--body style="background-color:rgb(23,32,45);"-->
+    <!--Nav bar-->
+    <nav class="navbar navbar-dark bg-dark">
+    <header class="navbar navbar-dark flex-column flex-md-row bd-navbar">
+    <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+    </ul>
+    <div class="navbar-nav-scroll">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+      <a class="nav-link" href="#"><img src="logo1.png"><font color="white">
+      &nbsp;&nbsp;&nbsp;LUCID SIMULATIONS&nbsp;&nbsp;&nbsp;</font></a>
+      </li>
+      </ul>
+    </div>
+    </div>
+    </header>
+    </nav>
+    <!--h1 align='CENTER'>BINARY SEARCH TREE</h1-->
+    <div id="sketch-holder" ,class="container">
+    </div>
+
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-1"><p>
+        
+        </p>
+        </div>
+        <div class="col-10 "><br>
+        <h3 align="center">2D TRANSFORMATIONS</h3>
+        <p>
+          Transformation means changing some graphics into something else by applying rules. We can have various types of transformations such as translation, scaling up or down, rotation, shearing, etc. When a transformation takes place on a 2D plane, it is called 2D transformation.<br>
+
+          Transformations play an important role in computer graphics to reposition the graphics on the screen and change their size or orientation.<br>
+        </p>
+        <p>
+          <h5>TRANSLATION</h5>
+          A translation moves an object to a different position on the screen. You can translate a point in 2D by adding translation coordinate (tx, ty) to the original coordinate (X, Y) to get the new coordinate (X’, Y’).<br><br>
+        </p>
+        <p align="center">
+          <img src="img1.jpg">
+        </p>
+        <p><h5>ROTATION</h5>
+          In rotation, we rotate the object at particular angle θ (theta) from its origin. From the following figure, we can see that the point P(X, Y) is located at angle φ from the horizontal X coordinate with distance r from the origin.<br>
+
+Let us suppose you want to rotate it at the angle θ. After rotating it to a new location, you will get a new point P’ (X’, Y’).<br><br></p>
+<p align="center">
+          <img src="img2.jpg">
+        </p>
+
+Using standard trigonometric the original coordinate of point P(X, Y) can be represented as −<br>
+
+X=rcosϕ......(1)<br>
+Y=rsinϕ......(2)<br><br>
+Same way we can represent the point P’ (X’, Y’) as −<br>
+
+x′=rcos(ϕ+θ)=rcosϕcosθ−rsinϕsinθ.......(3)<br>
+y′=rsin(ϕ+θ)=rcosϕsinθ+rsinϕcosθ.......(4)<br><br>
+Substituting equation (1) & (2) in (3) & (4) respectively, we will get<br>
+
+x′=xcosθ−ysinθ<br>
+y′=xsinθ+ycosθ<br><br>
+Representing the above equation in matrix form,<br>
+
+[X′Y′]=[XY] [cosθ −sinθ sinθ cosθ] OR<br>
+P’ = P . R<br>
+
+Where R is the rotation matrix<br>
+
+R=[cosθ −sinθ sinθ cosθ]<br><br>
+The rotation angle can be positive and negative.<br>
+
+For positive rotation angle, we can use the above rotation matrix. However, for negative angle rotation, the matrix will change as shown below −<br>
+
+R=[cos(−θ) −sin(−θ) sin(−θ) cos(−θ)]<br>
+=[cosθ sinθ −sinθ cosθ](∵cos(−θ)=cosθ and sin(−θ)=−sinθ)<br>
+        </p>
+        <p><h5>SCALING</h5>
+          To change the size of an object, scaling transformation is used. In the scaling process, you either expand or compress the dimensions of the object. Scaling can be achieved by multiplying the original coordinates of the object with the scaling factor to get the desired result.<br>
+
+Let us assume that the original coordinates are (X, Y), the scaling factors are (SX, SY), and the produced coordinates are (X’, Y’). This can be mathematically represented as shown below −<br>
+
+X' = X . SX and Y' = Y . SY<br>
+
+The scaling factor SX, SY scales the object in X and Y direction respectively. The above equations can also be represented in matrix form as below −<br>
+
+(X′Y′)=(XY)[Sx 0 0 Sy]<br>
+OR<br>
+P’ = P . S<br>
+Where S is the scaling matrix. The scaling process is shown in the following figure.<br></p>
+        <p align="center">
+          <img src="img3.jpg">
+        </p>
+        <p align="center">
+          <img src="img4.jpg">
+        </p>
+        <p>
+          If we provide values less than 1 to the scaling factor S, then we can reduce the size of the object. If we provide values greater than 1, then we can increase the size of the object.
+        </p>
+
+        <p><h5>SHEAR</h5>
+          A transformation that slants the shape of an object is called the shear transformation. There are two shear transformations X-Shear and Y-Shear. One shifts X coordinates values and other shifts Y coordinate values. However; in both the cases only one coordinate changes its coordinates and other preserves its values. Shearing is also termed as Skewing.<br><br>
+
+<h6>X-Shear</h6>
+The X-Shear preserves the Y coordinate and changes are made to X coordinates, which causes the vertical lines to tilt right or left as shown in below figure.<br>
+        </p>
+        
+        <p align="center">
+          <img src="img5.jpg">
+        </p>
+        
+        <p>
+          The transformation matrix for X-Shear can be represented as −<br>
+        Xsh=⎡⎣⎢ 1 shx 0 0 1 0 0 0 1 ⎤⎦⎥<br>
+        X' = X + Shx . Y<br>
+        Y’ = Y<br>
+        </p>
+
+        <p>
+          <h6>Y-Shear</h6>
+The Y-Shear preserves the X coordinates and changes the Y coordinates which causes the horizontal lines to transform into lines which slopes up or down as shown in the following figure.<br>
+        </p>
+
+        <p align="center">
+          <img src="img6.jpg">
+        </p>
+
+        <p>
+          The Y-Shear can be represented in matrix from as −<br>
+Ysh= ⎡⎣⎢ 1 0 0 shy 1 0 0 0 1 ⎤⎦⎥<br>
+Y’ = Y + Shy . X<br>
+X’ = X
+        </p>
+
+        <p>
+          <h5>Reflection</h5>
+Reflection is the mirror image of original object. In other words, we can say that it is a rotation operation with 180°. In reflection transformation, the size of the object does not change.<br>
+
+The following figures show reflections with respect to X and Y axes, and about the origin respectively.<br>
+        </p>
+
+        <p align="center">
+          <img src="img7.jpg">
+        </p>
+
+        <p align="center">
+          <img src="img8.jpg">
+        </p>
+
+        <p><br><h6>Simulation assumptions and constraints:-</h6>
+          <ul>
+            <li>All the transformations are done with respect to the center of the object. Therefore any transformation applied to the point will be reflected to the shape.</li>
+            <li>New rotation does not adds to its previous rotated angle.</li>
+            <li>Some transformations are not bounded to the canvas.</li>
+            <li>Other transformations are disabled when object is sheared.</li>
+          </ul>
+        </p>
+
+        <p align="right">Theory source : www.tutorialspoint.com</p>
+        </div>
+        <div class="col-1">
+        
+        </div>
+      </div>
+      <hr>
+    </div>
+
+  </body>
+</html> 
