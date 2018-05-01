@@ -242,6 +242,8 @@ function draw(){
     else if(shearx||sheary){
 
     }
+
+    //translate
     else if(transflag){
       disablebuttons();
       step = (init % ddalength);
@@ -301,6 +303,7 @@ function f_translate(){
     msgflag=3;//no shape drawn
   }
   else if(isFinite(motionx)&&motionx!=''&&isFinite(motiony)&&motiony!=''){
+      init=0;
       msgflag=0;
       transflag=true;
 
@@ -424,8 +427,8 @@ function f_rotate(){
   cursor(ARROW);
   drawr=false;
   drawe=false;
-  motiondeg=i_rotate.value().replace(/\s+/g,"");
-  motiondeg=parseInt(motiondeg);
+  var tem=i_rotate.value().replace(/\s+/g,"");
+  motiondeg=parseInt(tem);
   i_rotate.value('');
 
   if(!shape){
@@ -475,6 +478,7 @@ function rotateas(deg,w,h){
 }
 
 function f_refx(){ 
+  msgflag=0;
   if(shape){ 
     yxflag=false;
     xyflag=false;
@@ -489,7 +493,8 @@ function f_refx(){
     msgflag=3;//no shape
 }
 
-function f_refy(){  
+function f_refy(){ 
+  msgflag=0; 
   if(shape){ 
     yxflag=false;
     xyflag=false;
@@ -504,7 +509,8 @@ function f_refy(){
     msgflag=3;//no shape
 }
 
-function f_refo(){  
+function f_refo(){ 
+  msgflag=0; 
   if(shape){ 
     yxflag=false;
     xyflag=false;
@@ -524,7 +530,8 @@ function f_refo(){
     msgflag=3;//no shape
 }
 
-function f_refyx(){  
+function f_refyx(){ 
+  msgflag=0; 
   if(shape){ 
     mousetocanvas(dim[0],dim[1]);
     var x=pos[1];
@@ -545,6 +552,7 @@ function f_refyx(){
 }
 
 function f_refxy(){  
+  msgflag=0;
   if(shape){ 
     mousetocanvas(dim[0],dim[1]);
     var x=-pos[1];
